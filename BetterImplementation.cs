@@ -33,7 +33,6 @@ internal static class BetterImplementation
 
             var censored = buffer.AsMemory(0..usedBufferBytes);
 
-            // Potentially allocates a state machine box if the write is performed asynchronously.
             await output.WriteAsync(censored, cancel);
 
             return censoredNumberCount;
