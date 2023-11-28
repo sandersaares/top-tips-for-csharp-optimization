@@ -3,7 +3,7 @@
 namespace TopTips;
 
 [MemoryDiagnoser]
-[EventPipeProfiler(BenchmarkDotNet.Diagnosers.EventPipeProfile.GcVerbose)]
+//[EventPipeProfiler(BenchmarkDotNet.Diagnosers.EventPipeProfile.GcVerbose)]
 public class PiCensorship
 {
     [Benchmark(Baseline = true)]
