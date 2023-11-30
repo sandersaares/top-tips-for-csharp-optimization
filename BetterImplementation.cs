@@ -27,7 +27,7 @@ internal static class BetterImplementation
 
             // Skip the first 2 bytes because they are the "3." prefix.
             // The rest of the used buffer is the suffix.
-            var suffix = buffer.AsMemory(2..(usedBufferBytes - 2));
+            var suffix = buffer.AsMemory(2..usedBufferBytes);
 
             var censoredNumberCount = CensorSuffix(suffix);
 
