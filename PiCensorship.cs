@@ -7,38 +7,38 @@ namespace TopTips;
 public class PiCensorship
 {
     [Benchmark(Baseline = true)]
-    public Task<int> Typical()
+    public async Task Typical()
     {
-        return TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesAsync(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
+        await TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesAsync(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
     }
 
     [Benchmark]
-    public Task<int> Optimized1()
+    public async Task Optimized1()
     {
-        return TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesOptimized1Async(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
+        await TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesOptimized1Async(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
     }
 
     [Benchmark]
-    public Task<int> Optimized2()
+    public async Task Optimized2()
     {
-        return TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesOptimized2Async(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
+        await TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesOptimized2Async(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
     }
 
     [Benchmark]
-    public Task<int> Optimized3()
+    public async Task Optimized3()
     {
-        return TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesOptimized3Async(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
+        await TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesOptimized3Async(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
     }
 
     [Benchmark]
-    public Task<int> Optimized4()
+    public async Task Optimized4()
     {
-        return TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesOptimized4Async(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
+        await TypicalImplementation.WriteCensoredDigitsOfPiAsUtf8BytesOptimized4Async(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
     }
 
     [Benchmark]
-    public ValueTask<int> Optimized5()
+    public async Task Optimized5()
     {
-        return BetterImplementation.WriteCensoredDigitsOfPiAsUtf8BytesAsync(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
+        await BetterImplementation.WriteCensoredDigitsOfPiAsUtf8BytesAsync(DigitsOfPi.π1000, Stream.Null, CancellationToken.None);
     }
 }
