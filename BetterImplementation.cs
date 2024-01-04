@@ -11,12 +11,6 @@ internal static class BetterImplementation
     /// <returns>Count of censored digits.</returns>
     public static async ValueTask<int> WriteCensoredDigitsOfPiAsUtf8BytesAsync(string π, Stream output, CancellationToken cancel)
     {
-        ArgumentNullException.ThrowIfNull(π);
-        ArgumentNullException.ThrowIfNull(output);
-
-        if (!π.StartsWith("3.", StringComparison.Ordinal))
-            throw new ArgumentException("π must start with '3.'", nameof(π));
-
         // Immediately convert everything to UTF-8 bytes to avoid string operations.
         var desiredBufferLength = Encoding.UTF8.GetMaxByteCount(π.Length);
         var buffer = ArrayPool<byte>.Shared.Rent(desiredBufferLength);

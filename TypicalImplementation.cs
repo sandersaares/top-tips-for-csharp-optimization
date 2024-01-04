@@ -11,13 +11,7 @@ internal static class TypicalImplementation
     /// <returns>Count of censored digits.</returns>
     public static async Task<int> WriteCensoredDigitsOfPiAsUtf8BytesAsync(string π, Stream output, CancellationToken cancel)
     {
-        ArgumentNullException.ThrowIfNull(π);
-        ArgumentNullException.ThrowIfNull(output);
-
         var components = π.Split('.');
-
-        if (components.Length != 2)
-            throw new ArgumentException("π must be in the form of '3.14159...'", nameof(π));
 
         // The 3. is always the same, so we can just write it out.
         var prefix = components[0];
@@ -69,16 +63,10 @@ internal static class TypicalImplementation
     {
         // Allocates a Task<int> to return to the caller.
 
-        ArgumentNullException.ThrowIfNull(π);
-        ArgumentNullException.ThrowIfNull(output);
-
         // Allocates a string[2]
         // Allocates a string for components[0]
         // Allocates a string for components[1]
         var components = π.Split('.');
-
-        if (components.Length != 2)
-            throw new ArgumentException("π must be in the form of '3.14159...'", nameof(π));
 
         // The 3. is always the same, so we can just write it out.
         var prefix = components[0];
@@ -140,13 +128,6 @@ internal static class TypicalImplementation
     /// <returns>Count of censored digits.</returns>
     public static async Task<int> WriteCensoredDigitsOfPiAsUtf8BytesOptimized1Async(string π, Stream output, CancellationToken cancel)
     {
-        ArgumentNullException.ThrowIfNull(π);
-        ArgumentNullException.ThrowIfNull(output);
-
-        // OPTIMIZATION: Just validate the prefix without extracting it.
-        if (!π.StartsWith("3.", StringComparison.Ordinal))
-            throw new ArgumentException("π must start with '3.'", nameof(π));
-
         // Business logic for consecutive suffix numbers:
         // * if the number gets bigger, we allow it.
         // * if the number is equal, we allow it.
@@ -192,12 +173,6 @@ internal static class TypicalImplementation
     /// <returns>Count of censored digits.</returns>
     public static async Task<int> WriteCensoredDigitsOfPiAsUtf8BytesOptimized2Async(string π, Stream output, CancellationToken cancel)
     {
-        ArgumentNullException.ThrowIfNull(π);
-        ArgumentNullException.ThrowIfNull(output);
-
-        if (!π.StartsWith("3.", StringComparison.Ordinal))
-            throw new ArgumentException("π must start with '3.'", nameof(π));
-
         // Business logic for consecutive suffix numbers:
         // * if the number gets bigger, we allow it.
         // * if the number is equal, we allow it.
@@ -248,12 +223,6 @@ internal static class TypicalImplementation
     /// <returns>Count of censored digits.</returns>
     public static async Task<int> WriteCensoredDigitsOfPiAsUtf8BytesOptimized3Async(string π, Stream output, CancellationToken cancel)
     {
-        ArgumentNullException.ThrowIfNull(π);
-        ArgumentNullException.ThrowIfNull(output);
-
-        if (!π.StartsWith("3.", StringComparison.Ordinal))
-            throw new ArgumentException("π must start with '3.'", nameof(π));
-
         // Business logic for consecutive suffix numbers:
         // * if the number gets bigger, we allow it.
         // * if the number is equal, we allow it.
@@ -317,12 +286,6 @@ internal static class TypicalImplementation
     /// <returns>Count of censored digits.</returns>
     public static async Task<int> WriteCensoredDigitsOfPiAsUtf8BytesOptimized4Async(string π, Stream output, CancellationToken cancel)
     {
-        ArgumentNullException.ThrowIfNull(π);
-        ArgumentNullException.ThrowIfNull(output);
-
-        if (!π.StartsWith("3.", StringComparison.Ordinal))
-            throw new ArgumentException("π must start with '3.'", nameof(π));
-
         // Immediately convert everything to UTF-8 bytes to avoid string operations.
         var desiredBufferLength = Encoding.UTF8.GetMaxByteCount(π.Length);
         var buffer = ArrayPool<byte>.Shared.Rent(desiredBufferLength);
