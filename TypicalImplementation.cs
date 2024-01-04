@@ -333,7 +333,7 @@ internal static class TypicalImplementation
 
             // Skip the first 2 bytes because they are the "3." prefix.
             // The rest of the used buffer is the suffix.
-            var suffix = buffer.AsMemory(2..usedBufferBytes));
+            var suffix = buffer.AsMemory(2..usedBufferBytes);
 
             var censoredNumberCount = CensorSuffixOptimized4(suffix);
 
