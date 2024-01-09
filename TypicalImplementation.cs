@@ -328,18 +328,15 @@ internal static class TypicalImplementation
         // Start with zero (lowest value) to ensure the first number is allowed without special cases in algorithm.
         byte previous = (byte)'0';
 
-        var span = suffix.Span;
-
-        for (var i = 0; i < span.Length; i++)
+        foreach (ref var c in suffix.Span)
         {
-            var c = span[i];
             var isSmallerThanPrevious = c < previous;
             previous = c;
 
             if (isSmallerThanPrevious)
             {
                 censoredNumberCount++;
-                span[i] = (byte)'*';
+                c = (byte)'*';
             }
         }
 
